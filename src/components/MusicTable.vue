@@ -2,16 +2,28 @@
   <table class="table">
     <thead>
       <tr>
-        <th scope="col">Title</th>
-        <th scope="col">Artist</th>
+        <th scope="col">Cover</th>
+        <th scope="col">
+          <div>Title</div>
+          <div>Artist</div>
+        </th>
         <th scope="col">Shazam URL</th>
       </tr>
     </thead>
     <tbody>
       <tr v-for="hit in hits" :key="hit.track.key">
-        <th scope="row">{{ hit.track.title }}</th>
-        <td>{{ hit.track.subtitle }}</td>
-        <td>{{ hit.track.share.href }}</td>
+        <th scope="row"><img :src="hit.track.images.coverart" /></th>
+        <td>
+          <div>
+            {{ hit.track.title }}
+          </div>
+          <div>
+            {{ hit.track.subtitle }}
+          </div>
+        </td>
+        <td>
+          <a :href="hit.track.share.href" target="_blank"> Music Page </a>
+        </td>
       </tr>
     </tbody>
   </table>
@@ -21,24 +33,7 @@
 export default {
   name: "MusicTable",
   props: ["hits"],
-  //   data() {
-  //     return {
-  //       hits: [
-  //         {
-  //           track: {
-  //             title: "Kiss The Rain",
-  //             key: "20066955",
-  //             subtitle: "Billie Myers",
-  //             share: {
-  //               href: "https://www.shazam.com/track/20066955/kiss-the-rain",
-  //             },
-  //           },
-  //         },
-  //       ],
-  //     };
-  //   },
 };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped></style>
